@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link href="libs/css/bootstrap.css" rel="stylesheet">
-    <link href="libs/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="libs/bootstrap.css" rel="stylesheet">
     <link href="style/main.css" rel="stylesheet">
     <link href="style/main.css.map" rel="stylesheet">
     <title>Rusty Life</title>
@@ -16,27 +15,26 @@
   <body>
     <div class="wrap">
       <header class="home">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar">
           <div class="container-fluid">
-            <div class="navbar-header pull-left">
-              <a class="navbar-brand" href="#">Rusty Life</a>
-            </div>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+            <a class="navbar-brand" href="#">Rusty Life</a>
+            <button type="button" class="menu-toggle visible-xs">
+              <img src="./img/icons/menu.svg" alt="">
             </button>
           </div>
         </nav>
       </header>
       <main class="main container-fluid">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 sidebar">
-            <ul class="nav nav-tabs nav-stacked nav-sidebar">
-              <li class="active"><a href="#server" data-toggle="tab">Сервер №1</a></li>
-              <li><a href="#server" data-toggle="tab">Сервер №2</a></li>
-              <li><a href="#text" data-toggle="tab">text</a></li>
+        <div class="">
+          <div class="sidebar col-xs-12 col-sm-3 col-md-3 col-lg-2">
+            <ul class="">
+              <li class="active">
+                <a href="#server"><img src="./img/icons/server.svg" class="svg">server-1</a>
+              </li>
+              <li><a href="#server"><img src="./img/icons/server.svg" class="svg">server-2</a></li>
+              <li><a href="#server"><img src="./img/icons/server.svg" class="svg">server-3</a></li>
+              <li><a href="#server"><img src="./img/icons/server.svg" class="svg">server-4</a></li>
+              <li><a href="#text">text</a></li>
             </ul>
           </div>
         </div>
@@ -63,7 +61,6 @@
       </footer>
     </div>
     <script type="text/javascript" src="libs/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="libs/js/bootstrap.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </body>
 

@@ -1,3 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300&subset=cyrillic');
+* {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: $font-regular;
+    color: $color-black;    
+}
+
 body {
-  padding-top: 70px;
+  padding-top: 50px;
+  background: $color-white;
+}
+
+a {
+  text-decoration: none;
+  color: $color-black;
+}
+
+a:hover,
+a:focus {
+  color: $color-black;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding: 0;
+  }
 }
