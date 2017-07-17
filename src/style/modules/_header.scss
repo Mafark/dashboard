@@ -5,6 +5,7 @@
   height: 50px;
   line-height: 50px;
   top: 0;
+  z-index: 101;
 
   &-brand {
     color: $color-white;
@@ -21,17 +22,22 @@
   float: right;
 }
 
+.menu-hidden {
+  max-height: none !important;
+}
+
 .sidebar {
   position: fixed;
   top: 50px;
-  bottom: 0;
+  bottom: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 100;
   display: block;
-  padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
   background: $color-dark;
+  height: 100%;
+  padding: 0;
 
   a {
     color: $color-white / 1.2;
@@ -78,17 +84,46 @@
 
 @media (max-width: 767px) {
   .navbar {
-    position: relative;
+    position: static;
     top: 0;
     left: 0;
     right: 0;
   }
+
+  .menu-hidden {
+    max-height: 0 !important;
+  }
+
   .sidebar {
     position: relative;
+    top: -3px;
     bottom: none;
-    left: -15px;
-    right: 0;
-    width: 100vw;
-    top: -2px; 
+    left: none;
+    border-radius: 0 0 10px 10px;
+    display: block;
+    transition: 0.5s;
+    overflow: hidden;
+    max-height: 1000px;
+
+    li {
+      text-align: center;
+    }
+
+    a {
+      padding: 0;
+    }
+
+    li:hover a {
+      color: $color-white * 2;
+      padding: 0;
+    }
+
+    .active {
+      border: none;
+      background: $color-sharp;
+      a {
+        padding: 0;
+      }
+    }
   }
 }
