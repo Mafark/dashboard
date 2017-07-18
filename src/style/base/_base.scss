@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400&subset=cyrillic');
+
 * {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    font-size: $font-regular;
-    color: $color-black;    
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: $font-regular;
+  color: $color-black;
 }
 
 body {

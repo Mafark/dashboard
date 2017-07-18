@@ -5,6 +5,7 @@ var gulp = require('gulp'),
   cleanCSS = require('gulp-clean-css'),
   sourcemaps = require('gulp-sourcemaps'),
   autoprefixer = require('autoprefixer'),
+  concat = require('gulp-concat'),
   browserSync = require('browser-sync'),
   htmlmin = require('gulp-htmlmin'),
   reload = browserSync.reload;
@@ -20,11 +21,11 @@ var path = {
   },
   src: {
     html: 'src/*.html',
-    js: 'src/js/main.js',
+    js: ['src/js/main.js', 'src/js/**/*.js'],
     style: 'src/style/main.scss',
     img: 'src/img/**/*.*',
     libs: 'src/libs/**/*.*',
-    content: 'src/content/*/*.html'
+    content: 'src/content/**/*.html'
   },
   watch: {
     html: 'src/**/*.html',
@@ -59,6 +60,7 @@ gulp.task('html:build', function () {
 
 gulp.task('js:build', function () {
   gulp.src(path.src.js)
+    .pipe(concat('main.js'))
     .pipe(gulp.dest(path.build.js))
     .pipe(reload({ stream: true }));
 });
