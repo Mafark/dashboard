@@ -29,8 +29,10 @@ $(document).ready(function () {
 
     }, 'xml');
   });
-  $('.sidebar-tabs').lightTabs('.sidebar-tabs-content', 0)
-  $('.server-tabs').lightTabs('.server-tabs-content', 0)
+
+  $('.server').load('../content/sidebar/server.html');
+  // $('.sidebar-tabs').lightTabs('.sidebar-tabs-content', 0)
+  // $('.server-tabs').lightTabs('.server-tabs-content', 0)
 })
 
 //menu-toggle
@@ -55,8 +57,8 @@ $(document).ready(function () {
       var i = 0;
 
       var showPage = function (selector) {
-        $(contentSelector).children("div").hide(150);
-        $(contentSelector).children(selector).show(150);
+        $(contentSelector).children("div").hide();
+        $(contentSelector).children(selector).show();
         $(tabs).children("li").removeClass("active");
         $(tabs).children("li:has(a[href='" + selector + "'])").addClass("active");
       }
