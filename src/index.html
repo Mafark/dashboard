@@ -26,29 +26,30 @@
       </header>
       <main class="main">
         <div class="container-fluid">
-          <div>
-            <div class="sidebar menu-hidden col-xs-12 col-sm-3 col-md-3 col-lg-2">
-              <ul class="sidebar-tabs">
-                <li class="active">
-                  <a href=".server"><img src="./img/icons/server.svg" class="svg">server-1</a>
-                </li>
-                <li><a href=".server1"><img src="./img/icons/server.svg" class="svg">server-2</a></li>
-                <li><a href=".server2"><img src="./img/icons/server.svg" class="svg">server-3</a></li>
-                <li><a href=".server3"><img src="./img/icons/server.svg" class="svg">server-4</a></li>
-                <li><a href="#text">text</a></li>
-              </ul>
-            </div>
-          </div>
+          <section class="sidebar menu-hidden col-xs-12 col-sm-3 col-md-3 col-lg-2">
+            <ul class="sidebar-tabs">
+              <li class="active">
+                <a href=".server"><img src="./img/icons/server.svg" class="svg">server-1</a>
+              </li>
+              <li><a href=".server1"><img src="./img/icons/server.svg" class="svg">server-2</a></li>
+              <li><a href=".server2"><img src="./img/icons/server.svg" class="svg">server-3</a></li>
+              <li><a href=".server3"><img src="./img/icons/server.svg" class="svg">server-4</a></li>
+              <li><a href="#text">text</a></li>
+            </ul>
+          </section>
 
-          <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
+          <div class="content col-xs-12 col-sm-8 col-md-9 col-lg-10 col-sm-offset-3 col-md-offset-3 col-lg-offset-2">
             <div class="sidebar-tabs-content">
-              <div class="server server1 server2 server3 block">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#s" data-toggle="tab">Главная</a></li>
-                  <li><a href="#d" data-toggle="tab">Профиль</a></li>
-                  <li><a href="#c" data-toggle="tab">Сообщение</a></li>
+              <section class="server server1 server2 server3">
+                <h2 class="server-name">Сервер - 1</h2>
+                <ul class="server-tabs">
+                  <li class="active"><a href="#server-state">Состояние</a></li>
+                  <li><a href="#server-players">Игроки</a></li>
+                  <li><a href="#server-chat">Чат</a></li>
+                  <li><a href="#server-bans">Баны</a></li>
+                  <li><a href="#server-logs">Логи</a></li>
                 </ul>
-              </div>
+              </section>
               <div class="tab-pane fade" id="text">
                 <div>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem doloremque incidunt neque laborum in, dolorem

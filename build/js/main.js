@@ -30,6 +30,7 @@ $(document).ready(function () {
     }, 'xml');
   });
   $('.sidebar-tabs').lightTabs('.sidebar-tabs-content', 0)
+  $('.server-tabs').lightTabs('.server-tabs-content', 0)
 })
 
 //menu-toggle

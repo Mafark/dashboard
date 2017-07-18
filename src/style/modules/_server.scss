@@ -1,0 +1,33 @@
+.server-name {
+  font-size: $font-medium;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.server-tabs {
+  li {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0 5px 10px 5px;
+  }
+
+  li:after {
+    content: "";
+    width: 0;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: $color-sharp;
+    transition: all 0.2s ease-out;
+  }
+
+  li:hover:after {
+    width: 100%;
+  }
+
+  .active:after{
+    width: 100%;
+  }
+}
