@@ -2,7 +2,7 @@
 $(document).ready(function() {
   $('.server').load('../content/sidebarMenu/server.html');
   $().initializeMenu('.sidebar-tabs', '.sidebar-tabs-content', '../content/sidebarMenu/', 'server');
-  $('.preloader').animate({ opacity: 0 }, 1000);
+  preloaderToggle();
 });
 
 (function($) {
@@ -24,7 +24,8 @@ $(document).ready(function() {
   var sidebar = $('.sidebar');
   var menuToggle = $('.menu-toggle');
 
-  menuToggle.click(function() {
+  menuToggle.click(function () {
+    preloaderToggle();
     if (sidebar.hasClass('menu-hidden')) {
       sidebar.removeClass('menu-hidden');
     } else {
@@ -33,6 +34,11 @@ $(document).ready(function() {
   });
 })(jQuery);
 
+var preloaderToggle = function() {
+  var preloader = $('.preloader');
+  var hideClass = 'h';
+  preloader.hasClass(hideClass) ? preloader.removeClass(hideClass) : preloader.addClass(hideClass);
+};
 
 var svgReplace = function (params) {
   jQuery('img.svg').each(function () {

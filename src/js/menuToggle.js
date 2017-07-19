@@ -2,7 +2,8 @@
   var sidebar = $('.sidebar');
   var menuToggle = $('.menu-toggle');
 
-  menuToggle.click(function() {
+  menuToggle.click(function () {
+    preloaderToggle();
     if (sidebar.hasClass('menu-hidden')) {
       sidebar.removeClass('menu-hidden');
     } else {
