@@ -31,7 +31,7 @@
   top: 50px;
   bottom: 100%;
   left: 0;
-  z-index: 100;
+  z-index: 101;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
@@ -49,7 +49,7 @@
   .svg {
     vertical-align: top;
     stroke: $color-white / 1.2;
-    margin-right: 10px; 
+    margin-right: 10px;
     transition: 0.3s;
   }
 

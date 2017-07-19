@@ -1,47 +1,65 @@
 'use strict';
-$(document).ready(function () {
-  $('.server').load('../content/sidebar/server.html');
-})
+$(document).ready(function() {
+  $('.server').load('../content/sidebarMenu/server.html');
+  $().initializeMenu('.sidebar-tabs', '.sidebar-tabs-content', '../content/sidebarMenu/', 'server');
+  $('.preloader').animate({ opacity: 0 }, 1000);
+});
 
+(function($) {
+  $.fn.initializeMenu = function(menuSelector, contentSelector, path, firstTab, callback) {
+    $(contentSelector).load(path + firstTab + '.html');
+    $(menuSelector + ' li a').click(function() {
+      var linkName = $(this).attr('href');
+      var link = path + linkName + '.html';
+      $(contentSelector).load(link);
+      $(menuSelector + ' li').removeClass('active');
+      $(this).parent().addClass('active');
+      callback ? callback() : null;
+      return false;
+    });
+  };
+})(jQuery);
 
-!function ($) {
+(function($) {
   var sidebar = $('.sidebar');
   var menuToggle = $('.menu-toggle');
 
-  menuToggle.click(function () {
+  menuToggle.click(function() {
     if (sidebar.hasClass('menu-hidden')) {
       sidebar.removeClass('menu-hidden');
     } else {
       sidebar.addClass('menu-hidden');
     }
-  })
-}(jQuery)
+  });
+})(jQuery);
+
+
 var svgReplace = function (params) {
   jQuery('img.svg').each(function () {
-    var $img = jQuery(this);
-    var imgID = $img.attr('id');
-    var imgClass = $img.attr('class');
-    var imgURL = $img.attr('src');
+    var $img = jQuery(this)
+    var imgID = $img.attr('id')
+    var imgClass = $img.attr('class')
+    var imgURL = $img.attr('src')
 
     jQuery.get(imgURL, function (data) {
       // Get the SVG tag, ignore the rest
-      var $svg = jQuery(data).find('svg');
+      var $svg = jQuery(data).find('svg')
 
       // Add replaced image's ID to the new SVG
       if (typeof imgID !== 'undefined') {
-        $svg = $svg.attr('id', imgID);
+        $svg = $svg.attr('id', imgID)
       }
       // Add replaced image's classes to the new SVG
       if (typeof imgClass !== 'undefined') {
-        $svg = $svg.attr('class', imgClass + ' replaced-svg');
+        $svg = $svg.attr('class', imgClass + ' replaced-svg')
       }
 
       // Remove any invalid XML tags as per http://validator.w3.org
-      $svg = $svg.removeAttr('xmlns:a');
+      $svg = $svg.removeAttr('xmlns:a')
 
       // Replace image with new SVG
-      $img.replaceWith($svg);
-    }, 'xml');
-  });
+      $img.replaceWith($svg)
+    }, 'xml')
+  })
 }
-svgReplace();
+svgReplace()

@@ -1,12 +1,12 @@
-!(function ($) {
-  var sidebar = $('.sidebar')
-  var menuToggle = $('.menu-toggle')
+(function($) {
+  var sidebar = $('.sidebar');
+  var menuToggle = $('.menu-toggle');
 
-  menuToggle.click(function () {
+  menuToggle.click(function() {
     if (sidebar.hasClass('menu-hidden')) {
-      sidebar.removeClass('menu-hidden')
+      sidebar.removeClass('menu-hidden');
     } else {
-      sidebar.addClass('menu-hidden')
+      sidebar.addClass('menu-hidden');
     }
-  })
-}(jQuery))
+  });
+})(jQuery);
