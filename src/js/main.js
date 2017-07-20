@@ -1,5 +1,7 @@
 'use strict';
 $(document).ready(function() {
-  $().initializeMenu('.sidebar-tabs', '.sidebar-tabs-content', '../content/serverState.html');
-  preloaderToggle();
+  $().getContent('.sidebar-tabs-content', '../content/serverState.html', null, function() {
+    $().initializeMenu('.server-tabs', '.server-tabs-content', '.server-tabs-content');
+  });
+  $().initializeMenu('.sidebar-tabs', '.sidebar-tabs-content');
 });

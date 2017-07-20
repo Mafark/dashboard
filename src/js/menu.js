@@ -1,27 +1,30 @@
 (function($) {
-  $.fn.initializeMenu = function(menuSelector, contentSelector, firstContent, callback) {
-    getContent(contentSelector, firstContent);
+  $.fn.initializeMenu = function(menuSelector, contentSelector, part, callback) {
     $(menuSelector + ' li a').click(function() {
       var link = CONSTANT.site + $(this).attr('href');
-      getContent(contentSelector, link);
+      $().getContent(contentSelector, link, part, callback);
       $(menuSelector + ' li').removeClass('active');
       $(this).parent().addClass('active');
-      callback ? callback() : null;
       history.pushState('', '', link);
       return false;
     });
   };
 
-  var getContent = function(contentSelector, link) {
-    preloaderToggle();
-    setTimeout(function() { //DELETE timeout
-      $(contentSelector).fadeOut('fast', function() {
-        $(contentSelector).load(link, function() {
-          preloaderToggle();
-          $(contentSelector).fadeIn('fast');
-        });
+  $.fn.getContent = function(contentSelector, link, part, callback) {
+    var newLink;
+    if (part) {
+      newLink = link + ' ' + part;
+    } else {
+      newLink = link;
+    }
+    preloaderToggle(true);
+    $(contentSelector).fadeOut('fast', function() {
+      $(contentSelector).load(newLink, function() {
+        preloaderToggle(false);
+        callback ? callback() : null;
+        $(contentSelector).fadeIn('fast');
       });
-    }, 2000);
+    });
   };
 
   // var insertContent = function (contentSelector, htmlContent) {
