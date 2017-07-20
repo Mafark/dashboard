@@ -1,8 +1,7 @@
 'use strict';
 $(document).ready(function() {
-  $().getContent('.sidebar-tabs-content', '../content/serverState.html', null, function() {
-    $().initializeMenu('.server-tabs', '.server-tabs-content', '.server-tabs-content');
-  });
+  $().getContent('.sidebar-tabs-content', '../content/serverState.html', null);
+  $().initializeMenu('.server-tabs', '.server-tabs-content', '.server-tabs-content');
   $().initializeMenu('.sidebar-tabs', '.sidebar-tabs-content');
 });
 
@@ -11,7 +10,7 @@ var CONSTANT = {
 };
 (function($) {
   $.fn.initializeMenu = function(menuSelector, contentSelector, part, callback) {
-    $(menuSelector + ' li a').click(function() {
+    $('body').on('click', menuSelector + ' li a', function() {
       var link = CONSTANT.site + $(this).attr('href');
       $().getContent(contentSelector, link, part, callback);
       $(menuSelector + ' li').removeClass('active');
@@ -30,38 +29,20 @@ var CONSTANT = {
     }
     preloaderToggle(true);
     $(contentSelector).fadeOut('fast', function() {
-      $(contentSelector).load(newLink, function() {
+      try {
+        $(contentSelector).load(newLink, function() {
+          preloaderToggle(false);
+          callback ? callback() : null;
+          $(contentSelector).fadeIn('fast');
+        });
+      } catch (e) {
         preloaderToggle(false);
         callback ? callback() : null;
         $(contentSelector).fadeIn('fast');
-      });
+        console.log(e);
+      }
     });
   };
-
-  // var insertContent = function (contentSelector, htmlContent) {
-  //   $(contentSelector).html(htmlContent)
-  // }
-
-  // var getTab = function (contentName, contentDataUrl, callback) {
-  //   var response = {
-  //     content: null,
-  //     data: null
-  //   };
-  //   ajax.getTabContent(contentName).then(function (htmlContent) {
-  //     response.content = htmlContent;
-  //     (response.data) {
-  //       callback();
-  //       return response;
-  //     } : null;
-  //   })
-  //   ajax.getTabData(contentDataUrl).then(function (data) { //server/1
-  //     response.data = data;
-  //     (response.content) {
-  //       callback();
-  //       return response;
-  //     } : null;
-  //   })
-  // }
 })(jQuery);
 
 (function($) {
