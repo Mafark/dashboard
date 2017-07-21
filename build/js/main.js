@@ -1,9 +1,11 @@
 'use strict';
 $(document).ready(function() {
-  $().getContent('.sidebar-tabs-content', '../content/serverState.html', null);
-  $().initializeMenu('.server-tabs', '.server-tabs-content', '.server-tabs-content');
-  $().initializeMenu('.sidebar-tabs', '.sidebar-tabs-content');
+  $.pjax({ url: '../content/serverState.html', container: '.content' });
+  preloaderToggle(false);
 });
+
+$(document).pjax('a', '.content');
+
 
 var CONSTANT = {
   site: ''
@@ -15,7 +17,6 @@ var CONSTANT = {
       $().getContent(contentSelector, link, part, callback);
       $(menuSelector + ' li').removeClass('active');
       $(this).parent().addClass('active');
-      history.pushState('', '', link);
       return false;
     });
   };

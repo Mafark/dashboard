@@ -5,7 +5,6 @@
       $().getContent(contentSelector, link, part, callback);
       $(menuSelector + ' li').removeClass('active');
       $(this).parent().addClass('active');
-      history.pushState('', '', link);
       return false;
     });
   };
