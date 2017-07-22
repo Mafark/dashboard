@@ -1,6 +1,4 @@
-<h2 class="server-name">Сервер - 1</h2>
-<a class="navbar-brand" href="/">Rusty Life</a>
-
+<h2 class="server-name">Server - 1</h2>
 <ul class="server-tabs">
   <li class="active"><a href="../content/serverState.html">Состояние</a></li>
   <li><a href="../content/serverPlayers.html">Игроки</a></li>
@@ -9,8 +7,23 @@
   <li><a href="../content/serverLogs.html">Логи</a></li>
 </ul>
 <div class="server-tabs-content">
-  <div class="block">
-    <canvas id="chart_fps"></canvas>
+  <div class="block chart-block">
+    <div class="chart-title">
+      <h2>fps</h2>
+      <a href=""><img src="../img/icons/update.svg" class="svg"></a>
+    </div>
+    <div class="chart">
+      <canvas id="chart_fps"></canvas>
+    </div>
   </div>
-  <canvas id="myChart1"></canvas>
+  <div class="block chart-block">
+    <div class="chart-title">
+      <h2>Трафик сети</h2>
+      <a href=""><img src="../img/icons/update.svg" class="svg"></a>
+    </div>
+    <div class="chart">
+      <canvas id="chart_traffic"></canvas>
+    </div>
+  </div>
 </div>
+<a class="navbar-brand" href="/">Rusty Life</a>

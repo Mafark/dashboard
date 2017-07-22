@@ -1,6 +1,8 @@
 .block {
   background: #fff;
   border: 1px solid $color-white / 1.1;
+  padding: 12px 20px 15px 20px;
+  margin-bottom: 25px;
 }
 
 .preloader {
@@ -17,8 +19,12 @@
   background-size: 200px;
 }
 
-
 .h {
   opacity: 0 !important;
   z-index: -100;
+}
+
+.chart {
+  position: relative;
+  height: 300px;
 }

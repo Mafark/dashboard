@@ -3,7 +3,7 @@ $(window).on('changeUrl', function(event, data) {
     var labels = ['02:04:33', '02:04:35', '02:04:40'];
     var data = [10, 20, 30];
     pasteLineChart('#chart_fps', 'fps', labels, data);
-    pasteLineChart('#myChart1', 'fps', labels, data);
+    pasteLineChart('#chart_traffic', 'traffic', labels, data);
   }
 });
 
@@ -26,6 +26,7 @@ var pasteLineChart = function(selector, label, labels, data) {
 
     // Configuration options go here
     options: {
+      maintainAspectRatio: false,
       tooltips: {
         mode: 'nearest',
         intersect: false,

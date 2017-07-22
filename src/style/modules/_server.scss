@@ -1,15 +1,20 @@
 .server-name {
   font-size: $font-medium;
   text-transform: uppercase;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .server-tabs {
+  margin-bottom: 35px;
+
   li {
     position: relative;
     display: inline-block;
     margin-right: 10px;
     padding: 0 5px 10px 5px;
+    a {
+      font-size: $font-light;
+    }
   }
 
   li:after {
@@ -29,5 +34,22 @@
 
   .active:after {
     width: 100%;
+  }
+}
+
+.chart-block {
+  .chart-title {
+    margin: 10px 0 60px;
+    h2 {
+      text-transform: uppercase;
+      font-weight: 400;
+      float: left;
+      display: inline-block;
+    }
+    a {
+      float: right;
+      display: inline-block;
+      padding-right: 10px;
+    }
   }
 }

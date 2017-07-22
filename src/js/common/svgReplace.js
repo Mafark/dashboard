@@ -1,3 +1,7 @@
+$(window).on('changeUrl', function(event, data) {
+  svgReplace();
+});
+
 var svgReplace = function(params) {
   jQuery('img.svg').each(function() {
     var $img = jQuery(this);
