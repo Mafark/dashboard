@@ -4,7 +4,8 @@ $(document).ready(function() {
   // google.charts.load('current', { packages: ['corechart', 'line'] });
 
   // load initial content
-  $.pjax({ url: '../content/serverState.html', container: '.content' });
+  location.pathname === '/' ? $.pjax({ url: '../content/serverState.html', container: '.content' }) : null;
+  $.event.trigger('changeUrl');
 
   preloaderToggle(false);
 });
@@ -14,5 +15,5 @@ $(document).pjax('a', '.content');
 
 // event on load content
 $(document).on('ready pjax:end', function(event) {
-  $.event.trigger('changeUrl', { foo: 1 });
+  $.event.trigger('changeUrl');
 });
