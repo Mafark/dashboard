@@ -123,8 +123,6 @@ button {
   .sidebar .server-alert {
     float: right;
     stroke: #eef1f5; }
-  .sidebar .server-alert__warning {
-    stroke: #ff530d !important; }
   .sidebar li:hover a {
     color: white;
     padding-left: 34px; }
