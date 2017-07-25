@@ -55,6 +55,11 @@
 
   .server-alert {
     float: right;
+    stroke: $color-white;
+  }
+
+  .server-alert__warning {
+    stroke: $color-sharp !important;
   }
 
   li:hover a {
