@@ -26,33 +26,52 @@ var CONSTANT = {
 
   $(window).on('changeUrl', function(event, data) {
     if (location.pathname === '/content/serverState.html') {
-      chart_fps = pasteLineChart('#chart_fps', '', [], []);
-      chart_trafic = pasteLineChart('#chart_traffic', '', [], []);
+      chart_fps = pasteLineChart(
+        '#chart_fps',
+        [],
+        [
+          {
+            borderColor: 'rgb(235,89,55)',
+            borderWidth: 1,
+            lineTension: 0
+          }
+        ]
+      );
+      chart_trafic = pasteLineChart(
+        '#chart_traffic',
+        [],
+        [
+          {
+            borderColor: 'rgb(235,89,55)',
+            borderWidth: 1,
+            lineTension: 0
+          },
+          {
+            borderColor: 'rgb(10,20,20)',
+            borderWidth: 1,
+            lineTension: 0
+          }
+        ]
+      );
       createSocket('ws://91.214.70.52:28017/1234', chart_fps, 'fps.graph');
     }
   });
 
   var updateData = function(chart, labels, data) {
-    chart.data.datasets[0].data = data;
+    for (var i = 0; i < chart.data.datasets.length; i++) {
+      chart.data.datasets[i].data = data;
+    }
     chart.data.labels = labels;
     chart.update();
   };
 
-  var pasteLineChart = function(selector, label, labels, data) {
+  var pasteLineChart = function(selector, labels, datasets) {
     var ctx = $(selector);
     return new Chart(ctx, {
       type: 'line',
       data: {
         labels: labels,
-        datasets: [
-          {
-            label: label,
-            borderColor: 'rgb(235,89,55)',
-            borderWidth: 1,
-            lineTension: 0,
-            data: data
-          }
-        ]
+        datasets: datasets
       },
 
       // Configuration options go here
