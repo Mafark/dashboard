@@ -159,7 +159,7 @@ button {
     top: -3px;
     bottom: none;
     left: none;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 3px 3px;
     display: block;
     -webkit-transition: 0.5s;
     transition: 0.5s;

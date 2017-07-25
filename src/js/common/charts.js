@@ -55,6 +55,11 @@
                 maxRotation: 0
               }
             }
+          ],
+          yAxes: [
+            {
+              stacked: true
+            }
           ]
         }
       }
