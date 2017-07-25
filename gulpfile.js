@@ -68,10 +68,10 @@ gulp.task('style:build', function() {
   gulp
     .src(path.src.style)
     .pipe(sass().on('error', sass.logError))
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer()]))
-    .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(sourcemaps.write('.'))
+    // .pipe(cleanCSS({ compatibility: 'ie8' }))
+    // .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(path.build.css))
     .pipe(reload({ stream: true }));
 });
