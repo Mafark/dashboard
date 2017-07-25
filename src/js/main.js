@@ -5,7 +5,6 @@ $(document).ready(function() {
 
   // load initial content
   location.pathname === '/' ? $.pjax({ url: '../content/serverState.html', container: '.content' }) : null;
-  $.event.trigger('changeUrl');
 
   preloaderToggle(false);
 });

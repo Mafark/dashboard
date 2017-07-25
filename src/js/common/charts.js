@@ -4,15 +4,15 @@
 
   $(window).on('changeUrl', function(event, data) {
     if (location.pathname === '/content/serverState.html') {
-      var labels = ['02:04:33', '02:04:35', '02:04:40'];
-      var data = [10, 20, 30];
-      chart_fps = pasteLineChart('#chart_fps', 'fps', labels, data);
-      chart_trafic = pasteLineChart('#chart_traffic', 'traffic', labels, data);
+      chart_fps = pasteLineChart('#chart_fps', '', [], []);
+      chart_trafic = pasteLineChart('#chart_traffic', '', [], []);
+      createSocket('ws://91.214.70.52:28017/1234', chart_fps, 'fps.graph');
     }
   });
 
-  var addData = function(chart, label, data) {
+  var updateData = function(chart, labels, data) {
     chart.data.datasets[0].data = data;
+    chart.data.labels = labels;
     chart.update();
   };
 
@@ -59,5 +59,44 @@
         }
       }
     });
+  };
+
+  var createSocket = function(url, chart, message) {
+    var socket;
+    var connected = false;
+
+    typeof WebSocket !== 'undefined' &&
+      (function connect() {
+        socket = new WebSocket(url);
+        socket.onmessage = onMessage;
+        socket.onopen = () => {
+          connected = true;
+          setInterval(function() {
+            socket.send('{ "message": "' + message + '" }');
+          }, 1000);
+        };
+        socket.onerror = err => {
+          console.error(err);
+          socket.onclose = null;
+          connected = false;
+          socket.close();
+          connect();
+        };
+        socket.onclose = event => {
+          console.info(`WebSocket closed with code ${event.code}! ${event.reason}`);
+          connected = false;
+          if (event.wasClean) return;
+          connect();
+        };
+      })();
+
+    function onMessage(msg) {
+      var data = JSON.parse(JSON.parse(msg.data).Message);
+      var labels = [];
+      for (var i = 0; i < data.length; i++) {
+        labels[i] = data.length - i;
+      }
+      updateData(chart, labels, data);
+    }
   };
 })();
