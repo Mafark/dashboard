@@ -37,6 +37,7 @@
   overflow-y: auto;
   background: $color-dark;
   height: 100%;
+  width: 240px;
   padding: 0;
 
   a {
@@ -110,6 +111,7 @@
     transition: 0.5s;
     overflow: hidden;
     max-height: 1000px;
+    width: 100%;
 
     li {
       text-align: center;

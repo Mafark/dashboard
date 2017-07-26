@@ -71,10 +71,15 @@ button {
 
 .content {
   margin-top: 10px;
+  padding-left: 245px;
   position: relative; }
 
 .header {
   z-index: 102; }
+
+@media (max-width: 992px) {
+  .content {
+    padding-left: 0; } }
 
 .navbar {
   background: #2b3a42;
@@ -107,6 +112,7 @@ button {
   overflow-y: auto;
   background: #3f5765;
   height: 100%;
+  width: 240px;
   padding: 0; }
   .sidebar a {
     color: #c6c9cc;
@@ -162,7 +168,8 @@ button {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     overflow: hidden;
-    max-height: 1000px; }
+    max-height: 1000px;
+    width: 100%; }
     .sidebar li {
       text-align: center; }
     .sidebar a {
