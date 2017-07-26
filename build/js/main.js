@@ -190,7 +190,6 @@ svgReplace();
   var menuToggle = $('.menu-toggle');
 
   menuToggle.click(function() {
-    preloaderToggle();
     if (sidebar.hasClass('menu-hidden')) {
       sidebar.removeClass('menu-hidden');
     } else {

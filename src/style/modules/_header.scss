@@ -28,16 +28,12 @@
   float: right;
 }
 
-.menu-hidden {
-  max-height: none !important;
-}
-
 .sidebar {
   position: fixed;
   top: 50px;
   bottom: 100%;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
