@@ -185,7 +185,8 @@ var svgReplace = function(params) {
 };
 svgReplace();
 
-(function($) {
+//menu toggle
+(function() {
   var sidebar = $('.sidebar');
   var menuToggle = $('.menu-toggle');
 
@@ -196,7 +197,13 @@ svgReplace();
       sidebar.addClass('menu-hidden');
     }
   });
-})(jQuery);
+})();
+
+(function() {
+  $('.dropdown-tab').click(function(params) {
+    $(this).children('ul').slideToggle('slow');
+  });
+})();
 
 var preloaderToggle = function(on) {
   var preloader = $('.preloader');

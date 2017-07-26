@@ -31,7 +31,6 @@
 .sidebar {
   position: fixed;
   top: 50px;
-  bottom: 100%;
   left: 0;
   z-index: 1;
   display: block;
@@ -40,59 +39,59 @@
   background: $color-dark;
   height: 100%;
   width: 240px;
+}
 
-  a {
-    color: $color-white / 1.2;
-    padding-left: 20px;
-    text-transform: uppercase;
-    transition: 0.3s;
-  }
-
-  .svg {
-    // vertical-align: top;
-    stroke: $color-white / 1.2;
-    margin-right: 10px;
-    transition: 0.3s;
-    transform: translateY(17%);
-  }
-
-  .server-alert {
-    position: absolute;
-    right: 0;
-    stroke: $color-white;
-  }
-
-  ul {
-    margin-bottom: -5px;
-  }
-
+.sidebar-menu {
   li {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-bottom: 5px;
-    background: $color-dark * 1.3;
-    transition: 0.3s;
-    word-wrap: normal;
     position: relative;
-  }
 
-  li:hover a {
-    color: $color-white * 2;
-    padding-left: 34px;
-  }
-
-  li:hover .svg {
-    stroke: $color-white * 2;
-  }
-
-  .active {
-    border-left: 6px solid $color-sharp;
-    a {
-      color: $color-white * 2;
-      padding-left: 34px; // -6px border
+    span {
+      color: $color-white;
+      text-transform: uppercase;
+      display: inline-block;
+      vertical-align: middle;
     }
-    .svg {
-      stroke: $color-white * 2;
+
+    a {
+      padding: 4px 0 4px 20px;
+      display: block;
+
+      &:hover {
+        background: $color-grey;
+      }
+
+      .svg {
+        padding-right: 10px;
+        transition: 0.3s;
+        display: inline-block;
+        vertical-align: middle;
+        height: 35px;
+        width: 35px;
+      }
+    }
+
+    ul {
+      background: $color-black;
+    }
+
+    .active {
+      a {
+        background: $color-black !important;
+      }
+    }
+  }
+
+  .dropdown-tab {
+    & > a:hover {
+      background-color: inherit;
+    }
+
+    ul {
+      li {
+        a {
+          padding-left: 50px;
+        }
+      }
     }
   }
 }
@@ -118,26 +117,26 @@
     display: block;
     transition: 0.5s;
     overflow: hidden;
-    max-height: 1000px;
     width: 100%;
     margin-top: 3px;
 
     li {
       text-align: center;
-    }
 
-    a {
-      padding: 0;
-    }
+      &:hover a {
+        color: $color-white * 2;
+        padding: 0;
+      }
 
-    li:hover a {
-      color: $color-white * 2;
-      padding: 0;
+      a {
+        padding: 0;
+      }
     }
 
     .active {
       border: none;
       background: $color-sharp;
+
       a {
         padding: 0;
       }

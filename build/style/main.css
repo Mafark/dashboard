@@ -27,6 +27,9 @@
   position: relative;
   height: 300px; }
 
+.dropdown-tab ul {
+  display: none; }
+
 * {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -106,7 +109,6 @@ button {
 .sidebar {
   position: fixed;
   top: 50px;
-  bottom: 100%;
   left: 0;
   z-index: 1;
   display: block;
@@ -115,46 +117,37 @@ button {
   background: #3f5765;
   height: 100%;
   width: 240px; }
-  .sidebar a {
-    color: #c6c9cc;
-    padding-left: 20px;
+
+.sidebar-menu li {
+  position: relative; }
+  .sidebar-menu li span {
+    color: #eef1f5;
     text-transform: uppercase;
-    -webkit-transition: 0.3s;
-    transition: 0.3s; }
-  .sidebar .svg {
-    stroke: #c6c9cc;
-    margin-right: 10px;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    -webkit-transform: translateY(17%);
-            transform: translateY(17%); }
-  .sidebar .server-alert {
-    position: absolute;
-    right: 0;
-    stroke: #eef1f5; }
-  .sidebar ul {
-    margin-bottom: -5px; }
-  .sidebar li {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-bottom: 5px;
-    background: #527183;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    word-wrap: normal;
-    position: relative; }
-  .sidebar li:hover a {
-    color: white;
-    padding-left: 34px; }
-  .sidebar li:hover .svg {
-    stroke: white; }
-  .sidebar .active {
-    border-left: 6px solid #ff530d; }
-    .sidebar .active a {
-      color: white;
-      padding-left: 34px; }
-    .sidebar .active .svg {
-      stroke: white; }
+    display: inline-block;
+    vertical-align: middle; }
+  .sidebar-menu li a {
+    padding: 4px 0 4px 20px;
+    display: block; }
+    .sidebar-menu li a:hover {
+      background: #8e9ea5; }
+    .sidebar-menu li a .svg {
+      padding-right: 10px;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+      display: inline-block;
+      vertical-align: middle;
+      height: 35px;
+      width: 35px; }
+  .sidebar-menu li ul {
+    background: #2b3a42; }
+  .sidebar-menu li .active a {
+    background: #2b3a42 !important; }
+
+.sidebar-menu .dropdown-tab > a:hover {
+  background-color: inherit; }
+
+.sidebar-menu .dropdown-tab ul li a {
+  padding-left: 50px; }
 
 @media (max-width: 992px) {
   .navbar {
@@ -174,16 +167,15 @@ button {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     overflow: hidden;
-    max-height: 1000px;
     width: 100%;
     margin-top: 3px; }
     .sidebar li {
       text-align: center; }
-    .sidebar a {
-      padding: 0; }
-    .sidebar li:hover a {
-      color: white;
-      padding: 0; }
+      .sidebar li:hover a {
+        color: white;
+        padding: 0; }
+      .sidebar li a {
+        padding: 0; }
     .sidebar .active {
       border: none;
       background: #ff530d; }
