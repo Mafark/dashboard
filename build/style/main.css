@@ -232,3 +232,44 @@ button {
     float: right;
     display: inline-block;
     padding-right: 10px; }
+
+.state-block {
+  background: #3f5765;
+  height: 150px;
+  width: 100%;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+  .state-block .svg {
+    position: absolute;
+    opacity: 0.5;
+    height: 100px;
+    width: 100px;
+    left: 10px;
+    bottom: 10px;
+    z-index: 1; }
+  .state-block div {
+    padding-right: 20px;
+    z-index: 2; }
+  .state-block h3 {
+    color: #eef1f5;
+    font-size: 30px;
+    text-align: right;
+    text-transform: uppercase; }
+  .state-block p {
+    color: #c6c9cc;
+    text-align: right;
+    margin: 10px 0 0 0; }
+
+@media (min-width: 993px) and (max-width: 1020px) {
+  .state-block div {
+    padding-right: 10px; } }

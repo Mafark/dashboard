@@ -53,3 +53,52 @@
     }
   }
 }
+
+.state-block {
+  background: $color-dark;
+  height: 150px;
+  width: 100%;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .svg {
+    position: absolute;
+    opacity: 0.5;
+    height: 100px;
+    width: 100px;
+    left: 10px;
+    bottom: 10px;
+    z-index: 1;
+  }
+
+  div {
+    padding-right: 20px;
+    z-index: 2;
+  }
+
+  h3 {
+    color: $color-white;
+    font-size: $font-medium;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: $color-white/1.2;
+    text-align: right;
+    margin: 10px 0 0 0;
+  }
+}
+
+// fix micro bug. You can delete
+@media (min-width: 993px) and (max-width: 1020px) {
+  .state-block {
+    div {
+      padding-right: 10px;
+    }
+  }
+}
