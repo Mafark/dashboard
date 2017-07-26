@@ -95,6 +95,9 @@ button {
     font-weight: 600; }
   .navbar-brand:hover, .navbar-brand:focus {
     color: #eef1f5; }
+  .navbar .container-fluid {
+    padding-left: 0;
+    padding-right: 0; }
 
 .menu-toggle {
   float: right; }
@@ -107,7 +110,7 @@ button {
   top: 50px;
   bottom: 100%;
   left: 0;
-  z-index: 101;
+  z-index: 0;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
@@ -121,19 +124,18 @@ button {
     -webkit-transition: 0.3s;
     transition: 0.3s; }
   .sidebar .svg {
-    vertical-align: top;
     stroke: #c6c9cc;
     margin-right: 10px;
     -webkit-transition: 0.3s;
-    transition: 0.3s; }
+    transition: 0.3s;
+    -webkit-transform: translateY(17%);
+            transform: translateY(17%); }
   .sidebar .server-alert {
-    float: right;
+    position: absolute;
+    right: 0;
     stroke: #eef1f5; }
-  .sidebar li:hover a {
-    color: white;
-    padding-left: 34px; }
-  .sidebar li:hover .svg {
-    stroke: white; }
+  .sidebar ul {
+    margin-bottom: -5px; }
   .sidebar li {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -141,7 +143,13 @@ button {
     background: #527183;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    word-wrap: normal; }
+    word-wrap: normal;
+    position: relative; }
+  .sidebar li:hover a {
+    color: white;
+    padding-left: 34px; }
+  .sidebar li:hover .svg {
+    stroke: white; }
   .sidebar .active {
     border-left: 6px solid #ff530d; }
     .sidebar .active a {
@@ -156,9 +164,6 @@ button {
     top: 0;
     left: 0;
     right: 0; }
-    .navbar .container-fluid {
-      padding-left: 0;
-      padding-right: 0; }
   .menu-hidden {
     max-height: 0 !important; }
   .sidebar {
@@ -172,7 +177,8 @@ button {
     transition: 0.5s;
     overflow: hidden;
     max-height: 1000px;
-    width: 100%; }
+    width: 100%;
+    margin-top: 3px; }
     .sidebar li {
       text-align: center; }
     .sidebar a {

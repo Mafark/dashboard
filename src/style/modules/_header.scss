@@ -17,6 +17,11 @@
   &-brand:focus {
     color: $color-white;
   }
+
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .menu-toggle {
@@ -32,7 +37,7 @@
   top: 50px;
   bottom: 100%;
   left: 0;
-  z-index: 101;
+  z-index: 0;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
@@ -48,24 +53,21 @@
   }
 
   .svg {
-    vertical-align: top;
+    // vertical-align: top;
     stroke: $color-white / 1.2;
     margin-right: 10px;
     transition: 0.3s;
+    transform: translateY(17%);
   }
 
   .server-alert {
-    float: right;
+    position: absolute;
+    right: 0;
     stroke: $color-white;
   }
 
-  li:hover a {
-    color: $color-white * 2;
-    padding-left: 34px;
-  }
-
-  li:hover .svg {
-    stroke: $color-white * 2;
+  ul {
+    margin-bottom: -5px;
   }
 
   li {
@@ -75,6 +77,16 @@
     background: $color-dark * 1.3;
     transition: 0.3s;
     word-wrap: normal;
+    position: relative;
+  }
+
+  li:hover a {
+    color: $color-white * 2;
+    padding-left: 34px;
+  }
+
+  li:hover .svg {
+    stroke: $color-white * 2;
   }
 
   .active {
@@ -95,10 +107,6 @@
     top: 0;
     left: 0;
     right: 0;
-    .container-fluid {
-      padding-left: 0;
-      padding-right: 0;
-    }
   }
 
   .menu-hidden {
@@ -116,6 +124,7 @@
     overflow: hidden;
     max-height: 1000px;
     width: 100%;
+    margin-top: 3px;
 
     li {
       text-align: center;
