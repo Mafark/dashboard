@@ -200,8 +200,8 @@ svgReplace();
 })();
 
 (function() {
-  $('.dropdown-tab').click(function(params) {
-    $(this).children('ul').slideToggle('slow');
+  $('.dropdown-tab').children('a').click(function(params) {
+    $(this).siblings('ul').slideToggle('slow');
   });
 })();
 

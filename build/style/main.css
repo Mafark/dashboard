@@ -11,7 +11,7 @@
   transition: 1s;
   display: block;
   position: fixed;
-  z-index: 99;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
@@ -126,7 +126,7 @@ button {
     display: inline-block;
     vertical-align: middle; }
   .sidebar-menu li a {
-    padding: 4px 0 4px 20px;
+    padding: 6px 0 6px 20px;
     display: block; }
     .sidebar-menu li a:hover {
       background: #8e9ea5; }
@@ -140,14 +140,22 @@ button {
       width: 35px; }
   .sidebar-menu li ul {
     background: #2b3a42; }
-  .sidebar-menu li .active a {
-    background: #2b3a42 !important; }
 
 .sidebar-menu .dropdown-tab > a:hover {
   background-color: inherit; }
 
 .sidebar-menu .dropdown-tab ul li a {
   padding-left: 50px; }
+  .sidebar-menu .dropdown-tab ul li a span {
+    font-size: 16px;
+    text-transform: inherit; }
+
+.sidebar-menu .dropdown-tab .dropdown-icon {
+  position: absolute;
+  right: 0; }
+
+.sidebar-menu .active a {
+  background: #8e9ea5 !important; }
 
 @media (max-width: 992px) {
   .navbar {
