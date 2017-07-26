@@ -7,6 +7,7 @@
   top: 0;
   z-index: 101;
   padding: 0 15px 0 15px;
+  overflow: hidden;
 
   &-brand {
     color: $color-white;
@@ -55,6 +56,7 @@
     a {
       padding: 6px 0 6px 20px;
       display: block;
+      cursor: pointer;
 
       &:hover {
         background: $color-grey;
@@ -108,7 +110,7 @@
 
 @media (max-width: 992px) {
   .navbar {
-    position: static;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -119,16 +121,13 @@
   }
 
   .sidebar {
-    position: relative;
-    top: -3px;
-    bottom: none;
-    left: none;
+    position: static;
     border-radius: 0 0 3px 3px;
     display: block;
     transition: 0.5s;
     overflow: hidden;
     width: 100%;
-    margin-top: 3px;
+    max-height: 1000px;
 
     li {
       text-align: center;

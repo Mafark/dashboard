@@ -67,6 +67,8 @@ ul {
 button {
   background: none;
   border: none; }
+  button:focus {
+    outline: none; }
 
 @media (max-width: 992px) {
   body {
@@ -93,7 +95,8 @@ button {
   line-height: 50px;
   top: 0;
   z-index: 101;
-  padding: 0 15px 0 15px; }
+  padding: 0 15px 0 15px;
+  overflow: hidden; }
   .navbar-brand {
     color: #eef1f5;
     font-weight: 600; }
@@ -127,7 +130,8 @@ button {
     vertical-align: middle; }
   .sidebar-menu li a {
     padding: 6px 0 6px 20px;
-    display: block; }
+    display: block;
+    cursor: pointer; }
     .sidebar-menu li a:hover {
       background: #8e9ea5; }
     .sidebar-menu li a .svg {
@@ -159,24 +163,21 @@ button {
 
 @media (max-width: 992px) {
   .navbar {
-    position: static;
+    position: relative;
     top: 0;
     left: 0;
     right: 0; }
   .menu-hidden {
     max-height: 0 !important; }
   .sidebar {
-    position: relative;
-    top: -3px;
-    bottom: none;
-    left: none;
+    position: static;
     border-radius: 0 0 3px 3px;
     display: block;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     overflow: hidden;
     width: 100%;
-    margin-top: 3px; }
+    max-height: 1000px; }
     .sidebar li {
       text-align: center; }
       .sidebar li:hover a {
