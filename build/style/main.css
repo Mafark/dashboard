@@ -88,7 +88,8 @@ button {
   height: 50px;
   line-height: 50px;
   top: 0;
-  z-index: 101; }
+  z-index: 101;
+  padding: 0 15px 0 15px; }
   .navbar-brand {
     color: #eef1f5;
     font-weight: 600; }
@@ -112,8 +113,7 @@ button {
   overflow-y: auto;
   background: #3f5765;
   height: 100%;
-  width: 240px;
-  padding: 0; }
+  width: 240px; }
   .sidebar a {
     color: #c6c9cc;
     padding-left: 20px;
@@ -156,6 +156,9 @@ button {
     top: 0;
     left: 0;
     right: 0; }
+    .navbar .container-fluid {
+      padding-left: 0;
+      padding-right: 0; }
   .menu-hidden {
     max-height: 0 !important; }
   .sidebar {

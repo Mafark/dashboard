@@ -6,6 +6,7 @@
   line-height: 50px;
   top: 0;
   z-index: 101;
+  padding: 0 15px 0 15px;
 
   &-brand {
     color: $color-white;
@@ -38,7 +39,6 @@
   background: $color-dark;
   height: 100%;
   width: 240px;
-  padding: 0;
 
   a {
     color: $color-white / 1.2;
@@ -95,6 +95,10 @@
     top: 0;
     left: 0;
     right: 0;
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   .menu-hidden {
