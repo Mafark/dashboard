@@ -131,7 +131,8 @@ button {
   .sidebar-menu li a {
     padding: 6px 0 6px 20px;
     display: block;
-    cursor: pointer; }
+    cursor: pointer;
+    border-top: 1px solid #45606f; }
     .sidebar-menu li a:hover {
       background: #8e9ea5; }
     .sidebar-menu li a .svg {
@@ -149,7 +150,8 @@ button {
   background-color: inherit; }
 
 .sidebar-menu .dropdown-tab ul li a {
-  padding-left: 50px; }
+  padding-left: 50px;
+  border: 0; }
   .sidebar-menu .dropdown-tab ul li a span {
     font-size: 16px;
     text-transform: inherit; }
@@ -179,17 +181,9 @@ button {
     width: 100%;
     max-height: 1000px; }
     .sidebar li {
-      text-align: center; }
+      text-align: left; }
       .sidebar li:hover a {
-        color: white;
-        padding: 0; }
-      .sidebar li a {
-        padding: 0; }
-    .sidebar .active {
-      border: none;
-      background: #ff530d; }
-      .sidebar .active a {
-        padding: 0; } }
+        color: white; } }
 
 .server-name {
   font-size: 30px;
