@@ -1,7 +1,13 @@
 'use strict';
 $(document).ready(function() {
-  // load line chart
-  // google.charts.load('current', { packages: ['corechart', 'line'] });
+  // load sidebar
+  $.ajax({
+    url: 'http://a-life.online/Dashboard/Servers',
+    success: function(data) {
+      $('.sidebar').html(data);
+      menuInit();
+    }
+  });
 
   // load initial content
   location.pathname === '/' ? $.pjax({ url: '../content/serverState.html', container: '.content' }) : null;
