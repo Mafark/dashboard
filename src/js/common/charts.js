@@ -4,6 +4,7 @@
 
   $(window).on('changeUrl', function(event, data) {
     if (location.pathname === '/content/serverState.html') {
+      //create charts with params
       chart_fps = pasteLineChart(
         '#chart_fps',
         [],
@@ -31,7 +32,34 @@
           }
         ]
       );
-      createSocket('ws://91.214.70.52:28017/1234', chart_fps, 'fps.graph');
+
+      // create the handler function for socket
+      var onMessage = function(msg) {
+        // parse response
+        var message = JSON.parse(msg.data);
+        if (message.Error) {
+          console.error('Error: ' + message.Error);
+          return;
+        }
+        var data = JSON.parse(message.Data);
+
+        // update stats data
+        $('#serverstats_online').text(data.online + ' / ' + data.maxplayers);
+        $('#serverstats_sleepers').text(data.sleepers);
+        $('#serverstats_cpu').text(data.cpuLoad + '%');
+        $('#serverstats_memory').text(data.memLoad + '%');
+
+        // update charts data
+        var labels = [];
+        for (var i = 0; i < data.fps.length; i++) {
+          labels[i] = data.fps.length - i;
+        }
+        updateData(chart_fps, labels, data.fps);
+        updateData(chart_trafic, labels, data.traffic);
+      };
+
+      // connect to server
+      createSocket('ws://91.214.70.52:28017/1234', 'server.state', onMessage);
     }
   });
 
@@ -52,7 +80,6 @@
         datasets: datasets
       },
 
-      // Configuration options go here
       options: {
         maintainAspectRatio: false,
         tooltips: {
@@ -85,7 +112,7 @@
     });
   };
 
-  var createSocket = function(url, chart, message) {
+  var createSocket = function(url, message, onMessage) {
     var socket;
     var connected = false;
 
@@ -96,7 +123,7 @@
         socket.onopen = () => {
           connected = true;
           setInterval(function() {
-            socket.send('{ "message": "' + message + '" }');
+            socket.send('{ "command": "' + message + '" }');
           }, 1000);
         };
         socket.onerror = err => {
@@ -113,14 +140,5 @@
           connect();
         };
       })();
-
-    function onMessage(msg) {
-      var data = JSON.parse(JSON.parse(msg.data).Message);
-      var labels = [];
-      for (var i = 0; i < data.length; i++) {
-        labels[i] = data.length - i;
-      }
-      updateData(chart, labels, data);
-    }
   };
 })();
