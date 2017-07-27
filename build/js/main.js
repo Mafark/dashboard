@@ -219,7 +219,7 @@ svgReplace();
 
 (function() {
   $('.dropdown-tab').children('a').click(function(params) {
-    $(this).siblings('ul').slideToggle('slow');
+    $(this).siblings('ul').slideToggle('medium');
   });
 })();
 
