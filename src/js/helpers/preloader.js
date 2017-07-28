@@ -7,3 +7,11 @@ var preloaderToggle = function(on) {
     preloader.hasClass(hideClass) ? null : preloader.addClass(hideClass);
   }
 };
+
+$(document).on('pjax:start', function(event) {
+  preloaderToggle(true);
+});
+
+$(document).on('ready pjax:end', function(event) {
+  preloaderToggle(false);
+});

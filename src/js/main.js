@@ -4,15 +4,14 @@ $(document).ready(function() {
   $.ajax({
     url: 'http://a-life.online/Dashboard/Servers',
     success: function(data) {
-      $('.sidebar').html(data);
-      menuInit();
+      // $('.sidebar').html(data);
+      // menuInit();
     }
   });
+  menuInit(); //dell
 
   // load initial content
   location.pathname === '/' ? $.pjax({ url: '../content/serverState.html', container: '.content' }) : null;
-
-  preloaderToggle(false);
 });
 
 // menu initialization

@@ -266,3 +266,8 @@ button {
 @media (min-width: 993px) and (max-width: 1020px) {
   .state-block div {
     padding-right: 10px; } }
+
+table,
+th,
+td {
+  border: 1px solid black; }

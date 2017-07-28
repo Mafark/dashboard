@@ -4,15 +4,14 @@ $(document).ready(function() {
   $.ajax({
     url: 'http://a-life.online/Dashboard/Servers',
     success: function(data) {
-      $('.sidebar').html(data);
-      menuInit();
+      // $('.sidebar').html(data);
+      // menuInit();
     }
   });
+  menuInit(); //dell
 
   // load initial content
   location.pathname === '/' ? $.pjax({ url: '../content/serverState.html', container: '.content' }) : null;
-
-  preloaderToggle(false);
 });
 
 // menu initialization
@@ -171,6 +170,74 @@ var createSocket = function(url, message, onMessage) {
     })();
 };
 
+(function() {
+  var records = [
+    {
+      band: 'Weezer',
+      song: 'El Scorcho'
+    },
+    {
+      band: 'Chevelle',
+      song: 'Family System'
+    }
+  ];
+  $(window).on('changeUrl', function(event, data) {
+    if (location.pathname === '/content/serverPlayers.html') {
+      $('#my-final-table').dynatable({
+        dataset: {
+          records: records
+        }
+      });
+    }
+  });
+})();
+
+var menuInit = function() {
+  //menu toggle
+  var sidebar = $('.sidebar');
+  var menuToggle = $('.menu-toggle');
+
+  menuToggle.click(function() {
+    if (sidebar.hasClass('menu-hidden')) {
+      sidebar.removeClass('menu-hidden');
+    } else {
+      sidebar.addClass('menu-hidden');
+    }
+  });
+
+  //dropdown toggle
+  $('.dropdown-tab').children('a').click(function(params) {
+    $(this).siblings('ul').slideToggle('medium');
+  });
+
+  //replace active class
+  var links = $('.sidebar-menu a[href]');
+  links.click(function(event) {
+    links.each(function(index, link) {
+      $(link).parent('li').removeClass('active');
+    });
+    $(this).parent('li').addClass('active');
+  });
+};
+
+var preloaderToggle = function(on) {
+  var preloader = $('.preloader');
+  var hideClass = 'h';
+  if (on) {
+    preloader.hasClass(hideClass) ? preloader.removeClass(hideClass) : null;
+  } else {
+    preloader.hasClass(hideClass) ? null : preloader.addClass(hideClass);
+  }
+};
+
+$(document).on('pjax:start', function(event) {
+  preloaderToggle(true);
+});
+
+$(document).on('ready pjax:end', function(event) {
+  preloaderToggle(false);
+});
+
 $(window).on('changeUrl', function(event, data) {
   svgReplace();
 });
@@ -208,47 +275,3 @@ var svgReplace = function(params) {
   });
 };
 svgReplace();
-
-var menuInit = function() {
-  //menu toggle
-  (function() {
-    var sidebar = $('.sidebar');
-    var menuToggle = $('.menu-toggle');
-
-    menuToggle.click(function() {
-      if (sidebar.hasClass('menu-hidden')) {
-        sidebar.removeClass('menu-hidden');
-      } else {
-        sidebar.addClass('menu-hidden');
-      }
-    });
-  })();
-
-  //dropdown toggle
-  (function() {
-    $('.dropdown-tab').children('a').click(function(params) {
-      $(this).siblings('ul').slideToggle('medium');
-    });
-  })();
-
-  //replace active class
-  (function() {
-    var links = $('.sidebar-menu a[href]');
-    links.click(function(event) {
-      links.each(function(index, link) {
-        $(link).parent('li').removeClass('active');
-      });
-      $(this).parent('li').addClass('active');
-    });
-  })();
-};
-
-var preloaderToggle = function(on) {
-  var preloader = $('.preloader');
-  var hideClass = 'h';
-  if (on) {
-    preloader.hasClass(hideClass) ? preloader.removeClass(hideClass) : null;
-  } else {
-    preloader.hasClass(hideClass) ? null : preloader.addClass(hideClass);
-  }
-};
