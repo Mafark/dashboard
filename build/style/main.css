@@ -188,7 +188,7 @@ button {
 .server-name {
   font-size: 30px;
   text-transform: uppercase;
-  margin: 5px 0; }
+  margin: 5px 0 10px; }
 
 .server-tabs {
   margin-bottom: 35px; }
@@ -219,11 +219,9 @@ button {
   .chart-block .chart-title h2 {
     text-transform: uppercase;
     font-weight: 400;
-    float: left;
-    display: inline-block; }
+    float: left; }
   .chart-block .chart-title a {
     float: right;
-    display: inline-block;
     padding-right: 10px; }
 
 .state-block {
@@ -267,7 +265,33 @@ button {
   .state-block div {
     padding-right: 10px; } }
 
-table,
-th,
-td {
-  border: 1px solid black; }
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px; }
+  .table-container .table-header {
+    margin-bottom: 60px;
+    width: 100%; }
+    .table-container .table-header h2 {
+      float: left;
+      text-transform: uppercase;
+      font-weight: 400; }
+    .table-container .table-header form {
+      float: right; }
+
+.table {
+  border: 1px solid #8e9ea5;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center; }
+  .table th {
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #8e9ea5;
+    background: #aabec6; }
+    .table th span {
+      font-weight: 400; }
+  .table td {
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #8e9ea5; }

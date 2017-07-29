@@ -173,18 +173,33 @@ var createSocket = function(url, message, onMessage) {
 (function() {
   $(window).on('changeUrl', function(event, data) {
     if (location.pathname === '/content/serverPlayers.html') {
-      createAjaxTable(
-        '#table-player',
-        '#table-loader',
-        '#table-search',
-        'http://a-life.online/api/users?field=UserId&ascending=true'
-      );
+      createAjaxTable('#table-player', '#table-loader', '#table-search', 'http://a-life.online/api/users?', {
+        field: 'UserId',
+        ascending: 'true'
+      });
     }
   });
 
-  var createAjaxTable = function(tableSelector, preloaderSelector, seacrhFormSelector, url) {
+  var createAjaxTable = function(
+    tableSelector,
+    preloaderSelector,
+    seacrhFormSelector,
+    initialUrl,
+    urlParams
+  ) {
+    // global vars
+    var url = initialUrl;
     var nextPageLink = null;
     var columnsNames = null;
+
+    //generate url
+    var paramsNames = Object.keys(urlParams);
+    paramsNames.forEach(function(param) {
+      url += param + '=' + urlParams[param] + '&';
+    });
+    url = url.slice(0, -1);
+
+    // get initial table
     $(preloaderSelector).show();
     $.ajax({
       url: url,
@@ -204,6 +219,7 @@ var createSocket = function(url, message, onMessage) {
       }
     });
 
+    // infinity scroll
     $(window).scroll(function() {
       if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         $(preloaderSelector).show();
@@ -260,7 +276,8 @@ var createSocket = function(url, message, onMessage) {
       $tableHeaders.click(function() {
         $.ajax({
           url:
-            'http://a-life.online/api/users?field=' +
+            initialUrl +
+            'field=' +
             $(this).find('span')[0].innerText +
             '&ascending=' +
             changeAscending($(this)),

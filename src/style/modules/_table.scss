@@ -1,5 +1,41 @@
-table,
-th,
-td {
-  border: 1px solid black;
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+
+  .table-header {
+    margin-bottom: 60px;
+    width: 100%;
+    h2 {
+      float: left;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    form {
+      float: right;
+    }
+  }
+}
+
+.table {
+  border: 1px solid $color-grey;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+
+  th {
+    padding: 2px 5px 2px 5px;
+    border: 1px solid $color-grey;
+    background: $color-grey * 1.2;
+    span {
+      font-weight: 400;
+    }
+  }
+
+  td {
+    padding: 2px 5px 2px 5px;
+    border: 1px solid $color-grey;
+  }
 }

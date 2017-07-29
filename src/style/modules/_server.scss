@@ -1,7 +1,7 @@
 .server-name {
   font-size: $font-medium;
   text-transform: uppercase;
-  margin: 5px 0;
+  margin: 5px 0 10px;
 }
 
 .server-tabs {
@@ -44,11 +44,9 @@
       text-transform: uppercase;
       font-weight: 400;
       float: left;
-      display: inline-block;
     }
     a {
       float: right;
-      display: inline-block;
       padding-right: 10px;
     }
   }

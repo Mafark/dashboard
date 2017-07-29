@@ -1,17 +1,16 @@
-<h2 class="server-name">Сервер - 1</h2>
-<ul class="server-tabs">
-  <li><a href="../content/serverState.html">Состояние</a></li>
-  <li class="active"><a href="../content/serverPlayers.html">Игроки</a></li>
-  <li><a href="../content/serverChat.html">Чат</a></li>
-  <li><a href="../content/serverBans.html">Баны</a></li>
-  <li><a href="../content/serverLogs.html">Логи</a></li>
-</ul>
-<div class="server-tabs-content">
-  <form id="table-search">
-    <input type="text" />
-  </form>
-  <table id="table-player"></table>
-  <div id="table-loader" style="display:none;">
-    <center><img src="/img/preloader.svg" /></center>
+<h2 class="server-name">Server - 1</h2>
+<div class="block">
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Player list</h2>
+      <form id="table-search">
+        <span>Search: </span>
+        <input type="text" />
+      </form>
+    </div>
+    <table id="table-player" class="table"></table>
+    <div id="table-loader" style="display:none;">
+      <center><img src="/img/preloader.svg" /></center>
+    </div>
   </div>
 </div>
