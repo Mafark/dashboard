@@ -227,7 +227,6 @@ var createSocket = function(url, message, onMessage) {
           url: nextPageLink ? nextPageLink : url,
           success: function(response) {
             if (response) {
-              console.log(response);
               nextPageLink = response.nextpage;
               fillTableBody(response.items, columnsNames);
               $(preloaderSelector).hide();
