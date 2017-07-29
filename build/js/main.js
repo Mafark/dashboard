@@ -176,14 +176,13 @@ var createSocket = function(url, message, onMessage) {
       createAjaxTable(
         '#table-player',
         '#table-loader',
+        '#table-search',
         'http://a-life.online/api/users?field=UserId&ascending=true'
       );
     }
   });
 
-  var createAjaxTable = function(tableSelector, preloaderSelector, url) {
-    var ascending = getParameterByName('ascending', url);
-
+  var createAjaxTable = function(tableSelector, preloaderSelector, seacrhFormSelector, url) {
     var nextPageLink = null;
     var columnsNames = null;
     $(preloaderSelector).show();
@@ -191,13 +190,13 @@ var createSocket = function(url, message, onMessage) {
       url: url,
       success: function(response) {
         if (response) {
-          console.log(response);
           $(tableSelector).append('<thead></thead><tbody></tbody>');
           columnsNames = Object.keys(response.items[0]);
           nextPageLink = response.nextpage;
           fillTableHeader(columnsNames);
           fillTableBody(response.items, columnsNames);
-          bindSortButtons(tableSelector);
+          bindSortButtons(tableSelector, columnsNames);
+          initSearchForm(url, columnsNames);
           $(preloaderSelector).hide();
         } else {
           $(preloaderSelector).html('<center>No more posts to show.</center>');
@@ -209,10 +208,10 @@ var createSocket = function(url, message, onMessage) {
       if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         $(preloaderSelector).show();
         $.ajax({
-          url: url,
+          url: nextPageLink ? nextPageLink : url,
           success: function(response) {
             if (response) {
-              nextPageLink = response.NextPageLink;
+              nextPageLink = response.nextpage;
               fillTableBody(response.items, columnsNames);
               $(preloaderSelector).hide();
             } else {
@@ -244,7 +243,7 @@ var createSocket = function(url, message, onMessage) {
       replace ? $(tableSelector + ' tbody').html(tableBody) : $(tableSelector + ' tbody').append(tableBody);
     };
 
-    var bindSortButtons = function(tableSelector) {
+    var bindSortButtons = function(tableSelector, columnsNames) {
       var $tableHeaders = $(tableSelector + ' thead th');
 
       var changeAscending = function(_this) {
@@ -266,13 +265,24 @@ var createSocket = function(url, message, onMessage) {
             '&ascending=' +
             changeAscending($(this)),
           success: function(response) {
-            console.log(response);
             if (response) {
-              nextPageLink = response.NextPageLink;
+              nextPageLink = response.nextpage;
               fillTableBody(response.items, columnsNames, true);
-              $(preloaderSelector).hide();
-            } else {
-              $(preloaderSelector).html('<center>No more posts to show.</center>');
+            }
+          }
+        });
+      });
+    };
+
+    var initSearchForm = function(url, columnsNames) {
+      $('#table-search').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+          url: url + '&findpart=' + $(this).find('input').val(),
+          success: function(response) {
+            if (response) {
+              nextPageLink = response.nextpage;
+              fillTableBody(response.items, columnsNames, true);
             }
           }
         });
