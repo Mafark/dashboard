@@ -55,11 +55,15 @@
           url: nextPageLink ? nextPageLink : url,
           success: function(response) {
             if (response) {
+              console.log(response);
               nextPageLink = response.nextpage;
               fillTableBody(response.items, columnsNames);
               $(preloaderSelector).hide();
-            } else {
-              $(preloaderSelector).html('<center>No more posts to show.</center>');
+              if ((response.items.length = 0)) {
+                $(preloaderSelector).html('<center>No more posts to show.</center>');
+              } else {
+                $(preloaderSelector).html('<center><img src="/img/preloader.svg" /></center>');
+              }
             }
           }
         });
