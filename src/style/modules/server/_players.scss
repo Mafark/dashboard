@@ -1,0 +1,48 @@
+.upper-switch-buttons {
+  width: 100%;
+  margin-bottom: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  & > div {
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+
+    flex-grow: 1;
+    margin: 0 5px;
+    display: flex;
+
+    & button {
+      background: $color-dark;
+      padding: 10px 0;
+      transition: 0.2s;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+
+      &:hover,
+      &.active {
+        background: $color-grey;
+      }
+
+      .svg {
+        display: inline-block;
+        vertical-align: middle;
+        stroke: $color-white;
+      }
+
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        color: $color-white;
+        font-weight: 400;
+      }
+    }
+  }
+}
