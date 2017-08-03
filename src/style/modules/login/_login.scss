@@ -27,7 +27,8 @@
     border-color: $color-white;
     transition: 0.3s;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background: $color-white;
       color: $color-dark;
     }

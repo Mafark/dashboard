@@ -384,6 +384,6 @@ button {
   border-color: #eef1f5;
   -webkit-transition: 0.3s;
   transition: 0.3s; }
-  .login button:hover {
+  .login button:hover, .login button:focus {
     background: #eef1f5;
     color: #3f5765; }
