@@ -1,0 +1,35 @@
+.login {
+  .navbar-brand {
+    padding: 5px 0 0 10px;
+  }
+
+  h1 {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: $color-white;
+    font-size: $font-largest;
+    text-transform: uppercase;
+  }
+
+  button {
+    position: absolute;
+    display: block;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $color-white;
+    font-size: $font-medium;
+    border: 2px solid;
+    border-radius: 2px;
+    border-color: $color-white;
+    transition: 0.3s;
+
+    &:hover {
+      background: $color-white;
+      color: $color-dark;
+    }
+  }
+}
