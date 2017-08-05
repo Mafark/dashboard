@@ -25,6 +25,118 @@ $(document).on('ready pjax:end', function(event) {
 var CONSTANT = {
   site: ''
 };
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+var menuInit = function() {
+  //menu toggle
+  var sidebar = $('.sidebar');
+  var menuToggle = $('.menu-toggle');
+
+  menuToggle.click(function() {
+    if (sidebar.hasClass('menu-hidden')) {
+      sidebar.removeClass('menu-hidden');
+    } else {
+      sidebar.addClass('menu-hidden');
+    }
+  });
+
+  //dropdown toggle
+  $('.dropdown-tab').children('a').click(function(params) {
+    $(this).siblings('ul').slideToggle('medium');
+  });
+
+  //replace active class
+  var links = $('.sidebar-menu a[href]');
+  links.click(function(event) {
+    links.each(function(index, link) {
+      $(link).parent('li').removeClass('active');
+    });
+    $(this).parent('li').addClass('active');
+  });
+};
+
+var preloaderToggle = function(on) {
+  var preloader = $('.preloader');
+  var hideClass = 'h';
+  if (on) {
+    preloader.hasClass(hideClass) ? preloader.removeClass(hideClass) : null;
+  } else {
+    preloader.hasClass(hideClass) ? null : preloader.addClass(hideClass);
+  }
+};
+
+$(document).on('pjax:start', function(event) {
+  preloaderToggle(true);
+});
+
+$(document).on('ready pjax:end', function(event) {
+  preloaderToggle(false);
+});
+
+$(window).on('changeUrl', function(event, data) {
+  svgReplace();
+});
+
+var svgReplace = function(params) {
+  jQuery('img.svg').each(function() {
+    var $img = jQuery(this);
+    var imgID = $img.attr('id');
+    var imgClass = $img.attr('class');
+    var imgURL = $img.attr('src');
+
+    jQuery.get(
+      imgURL,
+      function(data) {
+        // Get the SVG tag, ignore the rest
+        var $svg = jQuery(data).find('svg');
+
+        // Add replaced image's ID to the new SVG
+        if (typeof imgID !== 'undefined') {
+          $svg = $svg.attr('id', imgID);
+        }
+        // Add replaced image's classes to the new SVG
+        if (typeof imgClass !== 'undefined') {
+          $svg = $svg.attr('class', imgClass + ' replaced-svg');
+        }
+
+        // Remove any invalid XML tags as per http://validator.w3.org
+        $svg = $svg.removeAttr('xmlns:a');
+
+        // Replace image with new SVG
+        $img.replaceWith($svg);
+      },
+      'xml'
+    );
+  });
+};
+svgReplace();
+
+(function() {
+  $(window).on('changeUrl', function() {
+    if (location.pathname === '/content/serverPlayers.html') {
+      initUpperButtonsMenu();
+    }
+  });
+
+  var initUpperButtonsMenu = function() {
+    var $buttons = $('.upper-switch-buttons').children('div').children('button');
+    $buttons.click(function() {
+      $buttons.each(function(index, button) {
+        $(button).removeClass('active');
+      });
+      $(this).addClass('active');
+    });
+  };
+})();
+
 (function() {
   var chart_fps;
   var chart_trafic;
@@ -308,117 +420,5 @@ var createSocket = function(url, message, onMessage) {
         });
       });
     };
-  };
-})();
-
-function getParameterByName(name, url) {
-  if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, '\\$&');
-  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-    results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-
-var menuInit = function() {
-  //menu toggle
-  var sidebar = $('.sidebar');
-  var menuToggle = $('.menu-toggle');
-
-  menuToggle.click(function() {
-    if (sidebar.hasClass('menu-hidden')) {
-      sidebar.removeClass('menu-hidden');
-    } else {
-      sidebar.addClass('menu-hidden');
-    }
-  });
-
-  //dropdown toggle
-  $('.dropdown-tab').children('a').click(function(params) {
-    $(this).siblings('ul').slideToggle('medium');
-  });
-
-  //replace active class
-  var links = $('.sidebar-menu a[href]');
-  links.click(function(event) {
-    links.each(function(index, link) {
-      $(link).parent('li').removeClass('active');
-    });
-    $(this).parent('li').addClass('active');
-  });
-};
-
-var preloaderToggle = function(on) {
-  var preloader = $('.preloader');
-  var hideClass = 'h';
-  if (on) {
-    preloader.hasClass(hideClass) ? preloader.removeClass(hideClass) : null;
-  } else {
-    preloader.hasClass(hideClass) ? null : preloader.addClass(hideClass);
-  }
-};
-
-$(document).on('pjax:start', function(event) {
-  preloaderToggle(true);
-});
-
-$(document).on('ready pjax:end', function(event) {
-  preloaderToggle(false);
-});
-
-$(window).on('changeUrl', function(event, data) {
-  svgReplace();
-});
-
-var svgReplace = function(params) {
-  jQuery('img.svg').each(function() {
-    var $img = jQuery(this);
-    var imgID = $img.attr('id');
-    var imgClass = $img.attr('class');
-    var imgURL = $img.attr('src');
-
-    jQuery.get(
-      imgURL,
-      function(data) {
-        // Get the SVG tag, ignore the rest
-        var $svg = jQuery(data).find('svg');
-
-        // Add replaced image's ID to the new SVG
-        if (typeof imgID !== 'undefined') {
-          $svg = $svg.attr('id', imgID);
-        }
-        // Add replaced image's classes to the new SVG
-        if (typeof imgClass !== 'undefined') {
-          $svg = $svg.attr('class', imgClass + ' replaced-svg');
-        }
-
-        // Remove any invalid XML tags as per http://validator.w3.org
-        $svg = $svg.removeAttr('xmlns:a');
-
-        // Replace image with new SVG
-        $img.replaceWith($svg);
-      },
-      'xml'
-    );
-  });
-};
-svgReplace();
-
-(function() {
-  $(window).on('changeUrl', function() {
-    if (location.pathname === '/content/serverPlayers.html') {
-      initUpperButtonsMenu();
-    }
-  });
-
-  var initUpperButtonsMenu = function() {
-    var $buttons = $('.upper-switch-buttons').children('div').children('button');
-    $buttons.click(function() {
-      $buttons.each(function(index, button) {
-        $(button).removeClass('active');
-      });
-      $(this).addClass('active');
-    });
   };
 })();

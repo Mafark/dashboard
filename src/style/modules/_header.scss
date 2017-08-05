@@ -29,6 +29,19 @@
   float: right;
 }
 
+.menu-logout {
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  position: relative;
+  @include button-border(2px, $color-white, $color-black);
+  font-size: $font-light;
+  color: $color-white;
+  text-transform: uppercase;
+  text-align: right;
+  text-align: justify;
+}
+
 .sidebar {
   position: fixed;
   top: 50px;

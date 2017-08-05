@@ -1,0 +1,12 @@
+@mixin button-border ($width, $color, $hover-text-color) {
+  border: $width solid;
+  border-radius: $width;
+  border-color: $color;
+  transition: 0.3s;
+
+  &:hover,
+  &:focus {
+    background: $color;
+    color: $hover-text-color;
+  }
+}

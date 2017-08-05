@@ -69,10 +69,6 @@ button {
   button:focus {
     outline: none; }
 
-@media (max-width: 992px) {
-  body {
-    padding: 0; } }
-
 .wrap {
   position: relative; }
 
@@ -98,6 +94,10 @@ button {
   width: 100%;
   background: linear-gradient(-45deg, #527183, #2b3a42); }
 
+@media (max-width: 992px) {
+  .index {
+    padding: 0; } }
+
 .navbar {
   background: #2b3a42;
   position: fixed;
@@ -119,6 +119,25 @@ button {
 
 .menu-toggle {
   float: right; }
+
+.menu-logout {
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  position: relative;
+  border: 2px solid;
+  border-radius: 2px;
+  border-color: #eef1f5;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-size: 16px;
+  color: #eef1f5;
+  text-transform: uppercase;
+  text-align: right;
+  text-align: justify; }
+  .menu-logout:hover, .menu-logout:focus {
+    background: #eef1f5;
+    color: #2b3a42; }
 
 .sidebar {
   position: fixed;
