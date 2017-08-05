@@ -118,9 +118,12 @@ button {
     padding-right: 0; }
 
 .menu-toggle {
-  float: right; }
+  float: right;
+  margin-left: 10px; }
 
 .menu-logout {
+  float: right;
+  top: 5px;
   height: 40px;
   line-height: 40px;
   display: inline-block;
@@ -132,9 +135,7 @@ button {
   transition: 0.3s;
   font-size: 16px;
   color: #eef1f5;
-  text-transform: uppercase;
-  text-align: right;
-  text-align: justify; }
+  text-transform: uppercase; }
   .menu-logout:hover, .menu-logout:focus {
     background: #eef1f5;
     color: #2b3a42; }

@@ -27,9 +27,12 @@
 
 .menu-toggle {
   float: right;
+  margin-left: 10px;
 }
 
 .menu-logout {
+  float: right;
+  top: 5px;
   height: 40px;
   line-height: 40px;
   display: inline-block;
@@ -38,8 +41,6 @@
   font-size: $font-light;
   color: $color-white;
   text-transform: uppercase;
-  text-align: right;
-  text-align: justify;
 }
 
 .sidebar {
