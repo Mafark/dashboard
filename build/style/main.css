@@ -194,6 +194,26 @@ button {
 .sidebar-menu .active a {
   background: #8e9ea5 !important; }
 
+.user-block {
+  margin-top: 20px;
+  white-space: nowrap; }
+  .user-block .user-avatar {
+    display: inline-block;
+    width: 60px;
+    margin-left: 20px; }
+  .user-block .user-info {
+    display: inline-block;
+    width: 155px;
+    vertical-align: middle; }
+    .user-block .user-info p {
+      margin: 0;
+      padding-left: 5px;
+      color: #eef1f5; }
+    .user-block .user-info .user-role {
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #8e9ea5; }
+
 @media (max-width: 992px) {
   .navbar {
     position: relative;
