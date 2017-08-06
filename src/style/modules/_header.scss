@@ -37,7 +37,6 @@
   line-height: 40px;
   display: inline-block;
   position: relative;
-  @include button-border(2px, $color-white, $color-black);
   font-size: $font-light;
   color: $color-white;
   text-transform: uppercase;

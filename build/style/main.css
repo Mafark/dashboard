@@ -128,17 +128,9 @@ button {
   line-height: 40px;
   display: inline-block;
   position: relative;
-  border: 2px solid;
-  border-radius: 2px;
-  border-color: #eef1f5;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
   font-size: 16px;
   color: #eef1f5;
   text-transform: uppercase; }
-  .menu-logout:hover, .menu-logout:focus {
-    background: #eef1f5;
-    color: #2b3a42; }
 
 .sidebar {
   position: fixed;
@@ -424,6 +416,9 @@ button {
   border-color: #eef1f5;
   -webkit-transition: 0.3s;
   transition: 0.3s; }
+  .login button:hover, .login button:focus {
+    background: #eef1f5;
+    color: #2b3a42; }
   .login button:hover, .login button:focus {
     background: #eef1f5;
     color: #3f5765; }

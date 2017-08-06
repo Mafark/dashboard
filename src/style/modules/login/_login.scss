@@ -22,10 +22,7 @@
     transform: translateX(-50%);
     color: $color-white;
     font-size: $font-medium;
-    border: 2px solid;
-    border-radius: 2px;
-    border-color: $color-white;
-    transition: 0.3s;
+    @include button-border(2px, $color-white, $color-black);
 
     &:hover,
     &:focus {
